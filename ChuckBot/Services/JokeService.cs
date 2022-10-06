@@ -1,23 +1,21 @@
-﻿using GrzesiekBot.Models;
+﻿using ChuckBot.Models;
 using Newtonsoft.Json;
 
-namespace GrzesiekBot.Services;
+namespace ChuckBot.Services;
 
 public interface IJokeService
 {
-    Task<string> GetRandomJoke();
+    Task<string> GetRandomJokeAsync();
 }
 
 public class JokeService : IJokeService
 {
     private readonly HttpClient _httpClient;
-    
-    public JokeService(HttpClient httpClient)
+    public JokeService()
     {
-        _httpClient = httpClient;
+        _httpClient = new HttpClient();
     }
-    
-    public async Task<string> GetRandomJoke()
+    public async Task<string> GetRandomJokeAsync()
     {
         var response = await _httpClient.GetAsync("https://api.chucknorris.io/jokes/random/");
         response.EnsureSuccessStatusCode();

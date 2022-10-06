@@ -1,4 +1,4 @@
-﻿namespace GrzesiekBot.Models;
+﻿namespace ChuckBot.Models;
 
 public class Joke
 {
